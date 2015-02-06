@@ -1,0 +1,26 @@
+{
+  "name": "happinessSurvey",
+  "version": "1.0.0",
+  "description": "The happiness predictor",
+  "main": "server/app.js",
+  "scripts": {
+    "start": "nodemon server/app.js",
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christophertrev/happinessSurvey.git"
+  },
+  "keywords": [
+    "happy"
+  ],
+  "author": "Christopher Treviño & Beth Johnson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/christophertrev/happinessSurvey/issues"
+  },
+  "homepage": "https://github.com/christophertrev/happinessSurvey",
+  "dependencies": {
+    "express": "^4.11.2"
+  }
+}
