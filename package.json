@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/christophertrev/happinessSurvey",
   "dependencies": {
-    "express": "^4.11.2"
+    "express": "^4.11.2",
+    "twilio": "^1.10.0"
   }
 }
