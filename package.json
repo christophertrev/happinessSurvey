@@ -22,6 +22,9 @@
   "homepage": "https://github.com/christophertrev/happinessSurvey",
   "dependencies": {
     "express": "^4.11.2",
+    "sequelize": "^2.0.0-rc8",
+    "sequelize-cli": "^1.2.0",
+    "sqlite3": "^3.0.4",
     "twilio": "^1.10.0"
   }
 }
