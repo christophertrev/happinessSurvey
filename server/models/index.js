@@ -1,31 +1,40 @@
-"use strict";
 
-var fs        = require("fs");
-var path      = require("path");
 var Sequelize = require("sequelize");
-var basename  = path.basename(module.filename);
-var env       = process.env.NODE_ENV || "development";
-var config    = require(__dirname + '/../config/config.json')[env];
-var sequelize = new Sequelize(config.database, config.username, config.password, config);
-var db        = {};
 
-fs
-  .readdirSync(__dirname)
-  .filter(function(file) {
-    return (file.indexOf(".") !== 0) && (file !== basename);
-  })
-  .forEach(function(file) {
-    var model = sequelize["import"](path.join(__dirname, file));
-    db[model.name] = model;
-  });
+var sequelize = new Sequelize('database', 'root', null, {
+  host: 'localhost',
+  dialect: 'sqlite',
 
-Object.keys(db).forEach(function(modelName) {
-  if ("associate" in db[modelName]) {
-    db[modelName].associate(db);
-  }
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000
+  },
+
+  // SQLite only
+  storage: __dirname + '/../db_sqlite/database.sqlite'
 });
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
 
-module.exports = db;
+
+
+
+var User = sequelize.define('user', {
+  firstName: {
+    type: Sequelize.STRING,
+    field: 'first_name' // Will result in an attribute that is firstName when user facing but first_name in the database
+  },
+  lastName: {
+    type: Sequelize.STRING
+  }
+}, {
+  freezeTableName: true // Model tableName will be the same as the model name
+});
+
+User.sync({force: true}).then(function () {
+  // Table created
+  return User.create({
+    firstName: 'John',
+    lastName: 'Hancock'
+  });
+});
