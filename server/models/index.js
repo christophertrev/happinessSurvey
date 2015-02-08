@@ -44,26 +44,50 @@ var User = sequelize.define('user', {
 
 
 
-User.sync({force: true}).then(function () {
-  // Table created
-  return User.create({
-    firstName: 'John',
-    lastName: 'Hancock'
-  });
+// User.sync().then(function () {
+//   // Table created
+//   return User.create({
+//     firstName: 'John',
+//     lastName: 'Hancock'
+//   });
+// });
+
+
+
+
+// Rating.sync().then(function () {
+//   // Table created
+//   return Rating.create({
+//     rating: 9,
+//     user_id: 10
+//   });
+// });
+
+Rating.hasMany(User)
+sequelize.sync({force: true}).then(function (){
+
+
+  console.log('Database Synced!')
+  
 });
 
 
+// console.log(User)
+// console.log(Rating)
 
 
-Rating.sync({force: true}).then(function () {
-  // Table created
-  return Rating.create({
-    rating: 9,
-    user_id: 1
-  });
-});
+Rating.create({
+  rating: 10,
+  user_id:1
+}).success(function (argument) {
+  console.log(argument)
+})
 
-Rating.hasMany(User, {as: 'Users'})
+
+
+
+
+
 
 
 module.exports = sequelize;
