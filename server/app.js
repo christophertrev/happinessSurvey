@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+var db = require('./models');
 
 
 var app = express();
