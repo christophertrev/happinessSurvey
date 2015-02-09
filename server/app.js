@@ -33,7 +33,7 @@ passport.use(new FacebookStrategy({
     clientID: config.FACEBOOK_APP_ID,
     clientSecret: config.FACEBOOK_APP_SECRET,
     callbackURL: "http://localhost:3000/auth/facebook/callback",
-    profileFields: ['id', 'name','picture.type(large)', 'emails','displayName', 'about', 'gender']
+    profileFields: ['id', 'name','picture.type(large)', 'emails','displayName']
     // profileFields: ['id', 'name','picture.type(large)', 'emails', 'username', 'displayName', 'about', 'gender']
   },
   function(accessToken, refreshToken, profile, done) {
@@ -90,6 +90,11 @@ app.get('/auth/facebook',passport.authenticate('facebook'));
 
 app.get('/test', ensureAuthenticated,  function (req, res){
   res.send('yes!')
+})
+
+app.get('/logout', function (req,res){
+  req.logout();
+  res.redirect('/');
 })
 
 

@@ -6,14 +6,16 @@ var controller = {};
 
 
 
-controller.addUser = function (firstName, lastName){
+controller.addUser = function (firstName, lastName, providerID, pictureURL){
   // returns a promise 
-  // console.log(arguments)
-
+  console.log('adduser argumetns', arguments)
   return db.model.User.findOrCreate({ 
     where: {
       firstName: firstName,
-      lastName: lastName
+      lastName: lastName,
+      providerID: providerID,
+      pictureURL: pictureURL,
+      provider: 'facebook'
     
     }
   })
