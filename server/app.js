@@ -9,6 +9,18 @@ var app = express();
 app.use(express.static(path.join(__dirname + '/../client')));
 
 app.get('/', function (req, res) {
+
+  // controllers.addUser('John', 'Hancock')
+  // .then(function(){
+  //   controllers.addRating(1100, 'John', 'Hancock')
+  //   .then(function(){
+  //     console.log('added bro user')
+  //   })
+
+  // })
+
+
+
   res.send('Hello World!')
 })
 

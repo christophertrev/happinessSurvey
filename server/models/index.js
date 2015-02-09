@@ -65,40 +65,40 @@ model.User = sequelize.define('user', {
 // });
 
 model.Rating.hasMany(model.User)
-sequelize.sync({force: true}).then(function (){
+sequelize.sync().then(function (){
 
 
-  model.User.create({
-    firstName: 'John',
-    lastName: 'Hancock'
-  });
+  // model.User.create({
+  //   firstName: 'John',
+  //   lastName: 'Hancock'
+  // });
 
-  model.User.create({
-    firstName: 'John',
-    lastName: 'Doe'
-  });
+//   // model.User.create({
+//   //   firstName: 'John',
+//   //   lastName: 'Doe'
+//   // });
 
-  model.User.create({
-    firstName: 'Walter',
-    lastName: 'FrankFurters'
-  });
+//   // model.User.create({
+//   //   firstName: 'Walter',
+//   //   lastName: 'FrankFurters'
+//   // });
 
-  model.Rating.create({
-    rating: 10,
-    user_id:1
-  });
+//   // model.Rating.create({
+//   //   rating: 10,
+//   //   user_id:1
+//   // });
 
-  model.Rating.create({
-    rating: 17,
-    user_id:3
-  });
+//   // model.Rating.create({
+//   //   rating: 17,
+//   //   user_id:3
+//   // });
 
-  model.Rating.create({
-    rating: 10,
-    user_id:10
-  });
+//   // model.Rating.create({
+//   //   rating: 10,
+//   //   user_id:10
+//   // });
 
-  console.log('Database Synced!')
+//   console.log('Database Synced!')
   
 });
 
