@@ -31,12 +31,15 @@ passport.use(new GitHubStrategy({
 passport.use(new FacebookStrategy({
     clientID: config.FACEBOOK_APP_ID,
     clientSecret: config.FACEBOOK_APP_SECRET,
-    callbackURL: "http://localhost:3000/auth/facebook/callback"
+    callbackURL: "http://localhost:3000/auth/facebook/callback",
+    profileFields: ['id', 'name','picture.type(large)', 'emails','displayName', 'about', 'gender']
+    // profileFields: ['id', 'name','picture.type(large)', 'emails', 'username', 'displayName', 'about', 'gender']
   },
   function(accessToken, refreshToken, profile, done) {
     console.log('accessToken', accessToken);
     console.log('refreshToken', refreshToken);
     console.log('profile', profile);
+    console.log('profiel picture', profile._json.picture)
     // User.findOrCreate({ githubId: profile.id }, function (err, user) {
       return done(null, profile);
     // });
