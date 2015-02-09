@@ -4,18 +4,22 @@ var passport = require('./passport');
 
 
 
+router.get('/facebook/callback', 
+  passport.authenticate('facebook', { failureRedirect: 'http://www.google.com' }),
+  function(req, res) {
+    res.redirect('/');
+  });
+
+router.get('/github/callback', 
+  passport.authenticate('facebook', { failureRedirect: 'http://www.google.com' }),
+  function(req, res) {
+    res.redirect('/');
+  });
 
 
-router.get('/github/callback', function (req, res){ 
 
-})
-router.get('/facebook/callback', function (req, res){
-
-})
-
-
-router.get('/auth/github',passport.authenticate('github'));
-router.get('/auth/facebook',passport.authenticate('facebook', { scope: 'email'}));
+router.get('/github',passport.authenticate('github'));
+router.get('/facebook',passport.authenticate('facebook', { scope: 'email'}));
 
 
 function ensureAuthenticated(req, res, next) {
@@ -25,6 +29,7 @@ function ensureAuthenticated(req, res, next) {
   }
   console.log('failed authentication')
   res.redirect('/')
+}
 
 
 
@@ -36,4 +41,3 @@ module.exports = function (app) {
 
 
 
-}
