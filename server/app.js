@@ -39,7 +39,7 @@ passport.use(new FacebookStrategy({
     console.log('accessToken', accessToken);
     console.log('refreshToken', refreshToken);
     console.log('profile', profile);
-    console.log('profiel picture', profile._json.picture)
+    // console.log('profiel picture', profile._json.picture)
     // User.findOrCreate({ githubId: profile.id }, function (err, user) {
       return done(null, profile);
     // });
@@ -48,12 +48,12 @@ passport.use(new FacebookStrategy({
 
 
 passport.serializeUser(function(user, done) {
-  console.log('serializeUser');
+  console.log('serializeUser', user);
   done(null, user);
 });
 
 passport.deserializeUser(function(obj, done) {
-  console.log('deserializeUser')
+  console.log('deserializeUser',obj)
   done(null, obj);
 });
 
@@ -76,7 +76,7 @@ app.use(cookieParser())
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(express.static(path.join(__dirname + '/../client')));
+// app.use(express.static(path.join(__dirname + '/../client')));
 
 app.get('/auth/github',passport.authenticate('github'));
 app.get('/auth/facebook',passport.authenticate('facebook'));
@@ -89,11 +89,12 @@ app.get('/test', ensureAuthenticated,  function (req, res){
 app.get('/', function (req, res) {
 
   // controllers.addUser('John', 'Hancock')
-  // .then(function(){
-  //   controllers.addRating(1100, 'John', 'Hancock')
-  //   .then(function(){
-  //     console.log('added bro user')
-  //   })
+  // .then(function(user){
+  //   console.log('added to user database', user)
+  //   // controllers.addRating(1100, 'John', 'Hancock')
+  //   // .then(function(){
+  //   //   console.log('added bro user')
+  //   // })
 
   // })
 

@@ -9,9 +9,12 @@ var controller = {};
 controller.addUser = function (firstName, lastName){
   // returns a promise 
 
-  return db.model.User.create({
-    firstName: firstName,
-    lastName: lastName
+  return db.model.User.findOrCreate({ 
+    where: {
+      firstName: firstName,
+      lastName: lastName
+    
+    }
   })
 
 }
