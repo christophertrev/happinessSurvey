@@ -46,9 +46,9 @@ passport.use(new FacebookStrategy({
     var json = profile._json;
     controllers.addUser(json.first_name, json.last_name,json.id, profile.photos[0].value,json.email)
     .then(function(user){
-      console.log(user)
-    })
+      console.log(user[0].dataValues)
       return done(null, profile);
+    })
     // });
   }
 ));
@@ -66,6 +66,8 @@ passport.deserializeUser(function(obj, done) {
 
 var app = express();
 app.use(morgan('dev'));
+app.set('views', __dirname + '/view');
+app.set('view engine', 'ejs');
 // // create a write stream (in append mode)
 // var accessLogStream = fs.createWriteStream(__dirname + '/access.log', {flags: 'a'})
 
@@ -95,6 +97,11 @@ app.get('/test', ensureAuthenticated,  function (req, res){
 app.get('/logout', function (req,res){
   req.logout();
   res.redirect('/');
+})
+
+app.get('/profile', function (req, res){
+  console.log(req.user._json);
+  res.render('profile', { user: req.user._json });
 })
 
 
