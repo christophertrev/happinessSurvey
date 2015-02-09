@@ -123,5 +123,5 @@ sequelize.sync({force: true}).then(function (){
 
 
 
-
-module.exports = sequelize;
+module.exports.model = model;
+module.exports.db = sequelize;

@@ -3,7 +3,11 @@ var controller = {};
 
 
 controller.addUser = function (firstName, lastName){
-
+  
+  db.model.User.create({
+    firstName: firstName,
+    lastName: lastName
+  })
 }
 
 
