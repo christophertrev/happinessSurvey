@@ -8,6 +8,7 @@ var controller = {};
 
 controller.addUser = function (firstName, lastName){
   // returns a promise 
+  // console.log(arguments)
 
   return db.model.User.findOrCreate({ 
     where: {

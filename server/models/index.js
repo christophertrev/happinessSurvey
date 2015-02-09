@@ -37,7 +37,17 @@ model.User = sequelize.define('user', {
   },
   lastName: {
     type: Sequelize.STRING
+  },
+  providerID : {
+    type: Sequelize.STRING
+  },
+  pictureURL : {
+    type: Sequelize.STRING
+  },
+  provider : {
+    type: Sequelize.STRING
   }
+
 }, {
   freezeTableName: true // Model tableName will be the same as the model name
 });

@@ -20,6 +20,7 @@ passport.use(new GitHubStrategy({
     console.log('accessToken', accessToken);
     console.log('refreshToken', refreshToken);
     console.log('profile', profile);
+    // Add user to database
 
     // User.findOrCreate({ githubId: profile.id }, function (err, user) {
       return done(null, profile);
@@ -41,6 +42,12 @@ passport.use(new FacebookStrategy({
     console.log('profile', profile);
     // console.log('profiel picture', profile._json.picture)
     // User.findOrCreate({ githubId: profile.id }, function (err, user) {
+      //Add user to Database
+    var json = profile._json;
+    controllers.addUser(json.first_name, json.last_name,json.id, profile.photos[0].value)
+    .then(function(user){
+      console.log(user)
+    })
       return done(null, profile);
     // });
   }
@@ -76,7 +83,7 @@ app.use(cookieParser())
 app.use(passport.initialize());
 app.use(passport.session());
 
-// app.use(express.static(path.join(__dirname + '/../client')));
+app.use(express.static(path.join(__dirname + '/../client')));
 
 app.get('/auth/github',passport.authenticate('github'));
 app.get('/auth/facebook',passport.authenticate('facebook'));
