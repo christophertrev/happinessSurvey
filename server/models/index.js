@@ -87,6 +87,16 @@ sequelize.sync({force: true}).then(function (){
     user_id:1
   });
 
+  Rating.create({
+    rating: 17,
+    user_id:3
+  });
+
+  Rating.create({
+    rating: 10,
+    user_id:10
+  });
+
   console.log('Database Synced!')
   
 });
