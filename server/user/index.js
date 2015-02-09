@@ -6,14 +6,20 @@ var db = require('../controllers')
 
 router.get('/profile', function (req, res){
   console.log(req.user._json);
-  res.render('profile', { user: req.user._json });
+  db.getRatings(req.user.id)
+  .then(function (ratings){
+    console.log('ratings', ratings)
+    res.render('profile', {user: req.user, ratings: ratings});
+
+  })
+  // res.render('profile', { user: req.user });
 })
 
 router.get('/rating', function (req, res){
   //array of getRatings
 
-  console.log(req.user)
-  db.getRatings(1)
+  // console.log(req.user)
+  db.getRatings(req.user.id)
   .then(function (ratings){
     // console.log(arguments)
     res.json(ratings)

@@ -1,3 +1,10 @@
 <p>ID: <%= user.id %></p>
-<p>Username: <%= user.first_name + ' ' +user.last_name %></p>
-<img src=<%= user.picture.data.url %>>
+<p>Username: <%= user.firstName + ' ' +user.lastName %></p>
+<img src=<%= user.pictureURL %>>
+
+
+<ul>
+<% for(var i=0; i<ratings.length; i++) {%>
+   <li><%= ratings[i].dataValues.rating %></li>
+<% } %>
+</ul>

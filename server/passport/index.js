@@ -36,8 +36,9 @@ passport.use(new FacebookStrategy({
     var json = profile._json;
     db.addUser(json.first_name, json.last_name,json.id, profile.photos[0].value,json.email)
     .then(function(user){
-      // console.log(user[0].dataValues)
-      return done(null, profile);
+      // console.log('hellooooooo', user)
+      // console.log('hellooooooo', user[0].dataValues)
+      return done(null, user[0].dataValues);
     })
     // });
   }
