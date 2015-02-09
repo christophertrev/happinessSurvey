@@ -44,7 +44,7 @@ passport.use(new FacebookStrategy({
     // User.findOrCreate({ githubId: profile.id }, function (err, user) {
       //Add user to Database
     var json = profile._json;
-    controllers.addUser(json.first_name, json.last_name,json.id, profile.photos[0].value)
+    controllers.addUser(json.first_name, json.last_name,json.id, profile.photos[0].value,json.email)
     .then(function(user){
       console.log(user)
     })
@@ -86,7 +86,7 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname + '/../client')));
 
 app.get('/auth/github',passport.authenticate('github'));
-app.get('/auth/facebook',passport.authenticate('facebook'));
+app.get('/auth/facebook',passport.authenticate('facebook', { scope: 'email'}));
 
 app.get('/test', ensureAuthenticated,  function (req, res){
   res.send('yes!')

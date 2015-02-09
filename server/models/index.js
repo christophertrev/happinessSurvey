@@ -46,6 +46,9 @@ model.User = sequelize.define('user', {
   },
   provider : {
     type: Sequelize.STRING
+  },
+  email: {
+    type: Sequelize.STRING
   }
 
 }, {
