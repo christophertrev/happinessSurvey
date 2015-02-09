@@ -96,20 +96,20 @@ sequelize.sync().then(function (){
 //   //   lastName: 'FrankFurters'
 //   // });
 
-//   // model.Rating.create({
-//   //   rating: 10,
-//   //   user_id:1
-//   // });
+  // model.Rating.create({
+  //   rating: 10,
+  //   user_id:1
+  // });
 
-//   // model.Rating.create({
-//   //   rating: 17,
-//   //   user_id:3
-//   // });
+  // model.Rating.create({
+  //   rating: 17,
+  //   user_id:1
+  // });
 
-//   // model.Rating.create({
-//   //   rating: 10,
-//   //   user_id:10
-//   // });
+  // model.Rating.create({
+  //   rating: 122,
+  //   user_id:1
+  // });
 
 //   console.log('Database Synced!')
   

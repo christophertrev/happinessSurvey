@@ -50,6 +50,15 @@ controller.addRating = function (rating, firstName, lastName){
 
 };
 
+controller.getRatings = function (user_id){
+  return db.model.Rating.findAll({
+    where: { 
+      user_id: user_id 
+    }  
+  })
+
+}
+
 
 
 module.exports = controller; 
