@@ -6,7 +6,9 @@ var session = require('express-session');
 var config = require('./config');
 var GitHubStrategy = require('passport-github').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
-var cookieParser = require('cookie-parser')
+var cookieParser = require('cookie-parser');
+var morgan = require('morgan');
+
 
 
 passport.use(new GitHubStrategy({
@@ -53,7 +55,7 @@ passport.deserializeUser(function(obj, done) {
 });
 
 var app = express();
-
+app.use(morgan('dev'));
 
 app.use(session({
   secret: 'keyboardCat',
