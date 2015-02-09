@@ -17,6 +17,11 @@ router.get('/github/callback',
     res.redirect('/');
   });
 
+router.get('/logout', function (req,res){
+  req.logout();
+  res.redirect('/');
+})
+
 
 router.get('/github',passport.authenticate('github'));
 router.get('/facebook',passport.authenticate('facebook', { scope: 'email'}));
