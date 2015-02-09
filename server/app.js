@@ -20,35 +20,18 @@ app.use(cookieParser())
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(morgan('dev'));
+// var accessLogStream = fs.createWriteStream(__dirname + '/access.log', {flags: 'a'})
+// app.use(morgan('combined', {stream: accessLogStream}))
 
+// Add all routes in routes.js
 addRoutes(app);
 
 app.set('views', __dirname + '/view');
 app.set('view engine', 'ejs');
-// // create a write stream (in append mode)
-// var accessLogStream = fs.createWriteStream(__dirname + '/access.log', {flags: 'a'})
 
-// setup the logger
-// app.use(morgan('combined', {stream: accessLogStream}))
 
 
 app.use(express.static(path.join(__dirname + '/../client')));
-
-
-app.get('/test', ensureAuthenticated,  function (req, res){
-  res.send('yes!')
-})
-
-// app.get('/profile', function (req, res){
-//   console.log(req.user._json);
-//   res.render('profile', { user: req.user._json });
-// })
-
-app.get('/logout', function (req,res){
-  req.logout();
-  res.redirect('/');
-})
-
 
 
 app.get('/', function (req, res) {
