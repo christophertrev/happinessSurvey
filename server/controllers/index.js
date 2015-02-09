@@ -45,5 +45,4 @@ controller.addRating = function (rating, firstName, lastName){
 
 
 
-
 module.exports = controller; 

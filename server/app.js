@@ -8,6 +8,15 @@ var app = express();
 
 app.use(express.static(path.join(__dirname + '/../client')));
 
+// app.get('/login',function (req, res){
+
+// });
+
+// app.post('/login',function (req, res){
+  
+// })
+
+
 app.get('/', function (req, res) {
 
   // controllers.addUser('John', 'Hancock')
