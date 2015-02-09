@@ -56,6 +56,11 @@ passport.deserializeUser(function(obj, done) {
 
 var app = express();
 app.use(morgan('dev'));
+// // create a write stream (in append mode)
+// var accessLogStream = fs.createWriteStream(__dirname + '/access.log', {flags: 'a'})
+
+// setup the logger
+// app.use(morgan('combined', {stream: accessLogStream}))
 
 app.use(session({
   secret: 'keyboardCat',
