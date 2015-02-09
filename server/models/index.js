@@ -67,6 +67,26 @@ Rating.hasMany(User)
 sequelize.sync({force: true}).then(function (){
 
 
+  User.create({
+    firstName: 'John',
+    lastName: 'Hancock'
+  });
+
+  User.create({
+    firstName: 'John',
+    lastName: 'Doe'
+  });
+
+  User.create({
+    firstName: 'Walter',
+    lastName: 'FrankFurters'
+  });
+
+  Rating.create({
+    rating: 10,
+    user_id:1
+  });
+
   console.log('Database Synced!')
   
 });
@@ -74,14 +94,17 @@ sequelize.sync({force: true}).then(function (){
 
 // console.log(User)
 // console.log(Rating)
+// User.create({
+//   firstName: 'John',
+//   lastName: 'Hancock'
+// });
 
-
-Rating.create({
-  rating: 10,
-  user_id:1
-}).success(function (argument) {
-  console.log(argument)
-})
+// Rating.create({
+//   rating: 10,
+//   user_id:1
+// }).success(function (argument) {
+//   console.log(argument)
+// })
 
 
 
