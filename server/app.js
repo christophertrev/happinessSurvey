@@ -39,10 +39,10 @@ app.get('/test', ensureAuthenticated,  function (req, res){
   res.send('yes!')
 })
 
-app.get('/profile', function (req, res){
-  console.log(req.user._json);
-  res.render('profile', { user: req.user._json });
-})
+// app.get('/profile', function (req, res){
+//   console.log(req.user._json);
+//   res.render('profile', { user: req.user._json });
+// })
 
 app.get('/logout', function (req,res){
   req.logout();

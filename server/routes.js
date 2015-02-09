@@ -1,7 +1,7 @@
 var express = require('express')
-// var router = express.Router();
 var passport = require('./passport');
 var authRoutes = require('./auth');
+var userRoutes = require('./user');
 
 
 function ensureAuthenticated(req, res, next) {
@@ -15,7 +15,7 @@ function ensureAuthenticated(req, res, next) {
 
 module.exports = function (app) {
   app.use('/auth', authRoutes);
-  // app.use('/u', ensureAuthenticated ,router);
+  app.use('/u', ensureAuthenticated, userRoutes);
 }
 
 
