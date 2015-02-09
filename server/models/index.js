@@ -1,4 +1,5 @@
 var Sequelize = require("sequelize");
+var model = {}
 
 var sequelize = new Sequelize('database', 'root', null, {
   host: 'localhost',
@@ -17,7 +18,7 @@ var sequelize = new Sequelize('database', 'root', null, {
 
 
 
-var Rating = sequelize.define('rating', {
+model.Rating = sequelize.define('rating', {
   rating: {
     type: Sequelize.INTEGER
     // field: 'first_name' // Will result in an attribute that is firstName when rating facing but first_name in the database
@@ -29,7 +30,7 @@ var Rating = sequelize.define('rating', {
   freezeTableName: true // Model tableName will be the same as the model name
 });
 
-var User = sequelize.define('user', {
+model.User = sequelize.define('user', {
   firstName: {
     type: Sequelize.STRING,
     field: 'first_name' // Will result in an attribute that is firstName when user facing but first_name in the database
@@ -63,36 +64,36 @@ var User = sequelize.define('user', {
 //   });
 // });
 
-Rating.hasMany(User)
+model.Rating.hasMany(model.User)
 sequelize.sync({force: true}).then(function (){
 
 
-  User.create({
+  model.User.create({
     firstName: 'John',
     lastName: 'Hancock'
   });
 
-  User.create({
+  model.User.create({
     firstName: 'John',
     lastName: 'Doe'
   });
 
-  User.create({
+  model.User.create({
     firstName: 'Walter',
     lastName: 'FrankFurters'
   });
 
-  Rating.create({
+  model.Rating.create({
     rating: 10,
     user_id:1
   });
 
-  Rating.create({
+  model.Rating.create({
     rating: 17,
     user_id:3
   });
 
-  Rating.create({
+  model.Rating.create({
     rating: 10,
     user_id:10
   });
