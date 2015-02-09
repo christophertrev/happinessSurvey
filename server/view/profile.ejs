@@ -5,6 +5,9 @@
 
 <ul>
 <% for(var i=0; i<ratings.length; i++) {%>
-   <li><%= ratings[i].dataValues.rating %></li>
+   <li><%= ratings[i].dataValues.rating %>
+      <span> <%= ratings[i].dataValues.createdAt %>
+      </span>
+   </li>
 <% } %>
 </ul>
